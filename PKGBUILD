@@ -3,7 +3,7 @@
 # Contributor: Matthew Sexton <wsdmatty@gmail.com>
 # Contributor: Lorenz Wellmer
 pkgname=clockify-desktop
-pkgver=2.1.18
+pkgver=2.1.19
 pkgrel=1
 pkgdesc="Truly free time tracker for teams, Desktop App"
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=("alsa-lib" "at-spi2-core" "cairo" "dbus" "expat" "gcc-libs" "glib2"
          "libx11" "libxcb" "libxcomposite" "libxdamage" "libxext" "libxfixes"
          "libxkbcommon" "libxrandr" "mesa" "nspr" "nss" "pango")
 source=("$pkgname-$pkgver.deb::https://clockify.me/downloads/Clockify_Setup_x64.deb")
-sha512sums=("b1ecd68e85db21044fc1bfdbb6ead192f0cb29f1c6e5b2632e7ee576c114f0986ede80cb3db7ad186a154363118e3e76f09ce4dbbd23b3adbddd49ce0370bfb5")
+sha512sums=("0f44489154e3c15a3da0d24abf4ac1389291b87f14fcb29af66086e692fe3947f0f77aa80d7a5ad0811eaad9a40af06f23b0550c2a54f08bd311f64bf1a75d27")
 
 package() {
     # Extract package data
@@ -51,8 +51,10 @@ package() {
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/autotracker-active.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/autotracker-inactive.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/billable.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/billablenew.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/calendar.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/checked.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/checkednew.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/circle_1.svg"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/circle_2.svg"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/clockify.ico"
@@ -108,11 +110,14 @@ package() {
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/sync-hover.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/sync.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/tag.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/tagnew.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/time-hover.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/time-off.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/time.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/workspace-checked.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/x.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/no-user-image.png"
+
 
     # Fix hardlinks
     rm "${pkgdir}/usr/share/icons/hicolor/32x32/apps/clockify.png"
