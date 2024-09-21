@@ -1,32 +1,4 @@
 include:
-  - project: 'common/gitlab-helper'
-    ref: master
-    file: 'container-helper.yml'
-  - project: 'common/gitlab-helper'
-    ref: master
-    file: 'deploy-helper.yml'
-    
-variables:
-  BUILD_AND_TEST_IMAGE: "build-and-test"
-
-workflow:
-  rules:
-    # don't create pipeline if the commit message starts with WIP
-    - if: $CI_COMMIT_MESSAGE =~ /^WIP/
-      when: never
-    # don't create pipeline if we're merging from master or version branches
-    - if: $CI_MERGE_REQUEST_IID && $CI_COMMIT_REF_NAME =~ /^(master|VER_\d+_\d+)$/
-      when: never
-    - if: $CI_MERGE_REQUEST_IID
-    - if: $CI_COMMIT_REF_NAME =~ /^(master|VER_\d+_\d+)$/
-    - if: $CI_COMMIT_TAG
-    - if: $CI_PIPELINE_SOURCE =~ /^(trigger|pipeline|web|api|merge_request_event)$/
-
-.rules_templates:
-  rules:
-    - if: &on_master $CI_COMMIT_REF_NAME =~ /^master$/
-
-include:
   - project: "common/gitlab-helper"
     ref: master
     file: "ci-helper.yml"
@@ -37,9 +9,9 @@ variables:
   PKG_NAME: "clockify-desktop"
 
 stages:
-  - build
-  - test
-  - deploy
+- build
+- test
+- deploy
 
 build-clockify-desktop:
   extends: .arch-build
@@ -51,13 +23,13 @@ test-clockify-desktop:
   image: ${CI_REGISTRY}/common/gitlab-helper/archlinux-yay:master
   needs: ["build-clockify-desktop"]
   after_script:
-    # This is not a very sophisticated test but at least checks the binary is 
-    # in place and there are all shared libs found in the system
-    - |
-      if [[ -n $(ldd /opt/Clockify/clockify | grep "not found") ]]; then
-        ldd /opt/Clockify/clockify | grep "not found"
-        exit 1
-      fi
+  # This is not a very sophisticated test but at least checks the binary is
+  # in place and there are all shared libs found in the system
+  - |
+    if [[ -n $(ldd /opt/Clockify/clockify | grep "not found") ]]; then
+      ldd /opt/Clockify/clockify | grep "not found"
+      exit 1
+    fi
 
 deploy-clockify-desktop:
   extends: .arch-deploy
