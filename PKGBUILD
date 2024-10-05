@@ -3,7 +3,7 @@
 # Contributor: Matthew Sexton <wsdmatty@gmail.com>
 # Contributor: Lorenz Wellmer
 pkgname=clockify-desktop
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Truly free time tracker for teams, Desktop App"
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=("alsa-lib" "at-spi2-core" "cairo" "dbus" "expat" "gcc-libs" "glib2"
          "libx11" "libxcb" "libxcomposite" "libxdamage" "libxext" "libxfixes"
          "libxkbcommon" "libxrandr" "mesa" "nspr" "nss" "pango")
 source=("$pkgname-$pkgver.deb::https://clockify.me/downloads/Clockify_Setup_x64.deb")
-sha512sums=("cb37dbc34f4c906b40bc02080960bddd985ff33ceea5a53be3503c4821f5d2e0591052dafcd31dfa7fe416a2c6fd54aa118559b3781d859cbaea934ddc913fbb")
+sha512sums=("1d088b4dcd619cccfd6b0eb8ccd158f53e3c320f992078a8a18fb879418080f73eee7d2554b25d8a3a7b5b9549d0310d76874deaa4bfc6668a1abaf7d52b1194")
 
 package() {
     # Extract package data
@@ -48,7 +48,11 @@ package() {
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/arrow-light-mode.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/automatic-hover.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/automatic.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/autotracker-active-hover.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/autotracker-active-newest.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/autotracker-active.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/autotracker-inactive-hover.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/autotracker-inactive-newest.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/autotracker-inactive.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/billable.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/billablenew.png"
