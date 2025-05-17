@@ -3,7 +3,7 @@
 # Contributor: Matthew Sexton <wsdmatty@gmail.com>
 # Contributor: Lorenz Wellmer
 pkgname=clockify-desktop
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Truly free time tracker for teams, Desktop App"
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=("alsa-lib" "at-spi2-core" "cairo" "dbus" "expat" "gcc-libs" "glib2"
          "libx11" "libxcb" "libxcomposite" "libxdamage" "libxext" "libxfixes"
          "libxkbcommon" "libxrandr" "mesa" "nspr" "nss" "pango")
 source=("$pkgname-$pkgver.deb::https://clockify.me/downloads/Clockify_Setup_x64.deb")
-sha512sums=("073de411d36005c9fd76a911f0328ad37c0077349e7d69a58a68aa87225d38555904891eb81b93bf376dad7ed6174b48164ab756ae2d5f5a509c3628dbdfad19")
+sha512sums=("d8ba792de074fbf35fb462497f264d8814514bdc10cdc35495ed9798857b4cc390ac301a12f99982565151daa758186861ada7a5906a4e4a5eee0377a749cdaa")
 
 package() {
     # Extract package data
@@ -29,6 +29,8 @@ package() {
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/appicons/64x64.ico"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/appicons/64x64.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/appicons/blue.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/appicons/tray-active-22.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/appicons/tray-inactive-22.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/appicons/white.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/assets.d.ts"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/assets.js"
